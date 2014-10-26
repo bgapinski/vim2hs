@@ -63,18 +63,18 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
   highlight default link hsImport hsStatement
   highlight default link hsImportKeyword hsKeyword
 
-  syntax match hsStructure
+  syntax match hsOperator
     \ "[[:punct:]]\@<!\%(=\)[[:punct:]]\@!"
     \ display
 
   if !a:conceal_wide
-    syntax match hsStructure
+    syntax match hsOperator
       \ "[[:punct:]]\@<!\%(->\|→\|<-\|←\|::\|∷\)[[:punct:]]\@!"
       \ display
   endif
 
   if !a:conceal_bad
-    syntax match hsStructure
+    syntax match hsOperator
       \ "[[:punct:]]\@<!\%(=>\|⇒\|-<<\?\)[[:punct:]]\@!"
       \ display
   endif
@@ -84,6 +84,7 @@ function! vim2hs#haskell#syntax#keywords(conceal_wide, conceal_enumerations, con
   highlight default link hsStatement Statement
   highlight default link hsConditional Conditional
   highlight default link hsKeyword Keyword
+  highlight default link hsOperator Operator
 endfunction " }}}
 
 
@@ -105,6 +106,10 @@ function! vim2hs#haskell#syntax#types() " {{{
   syntax match hsType
     \ "^\(\s*\)\%(default\s\+\)\?\%(\k\+\|([^[:alnum:]]\+)\)\_s*\(::\|∷\).*\%(\n\1\s.*\)*"
     \ contains=TOP,@Spell
+
+  syntax match hsType "\(^import\s.*\|^module\s.*\)\@<!\(^\|[^a-zA-Z0-9]\)\@<=[A-Z][a-zA-Z0-9_]*"
+  syntax match hsType "()"
+  syntax match hsType "\[\]"
 
   highlight default link hsType Type
 endfunction " }}}

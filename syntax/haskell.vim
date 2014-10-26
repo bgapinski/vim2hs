@@ -98,7 +98,7 @@ call vim2hs#haskell#syntax#keywords(
 
 call vim2hs#haskell#syntax#types()
 
-call vim2hs#haskell#syntax#folds()
+"call vim2hs#haskell#syntax#folds()
 
 call vim2hs#haskell#syntax#strings(
   \ g:haskell_multiline_strings)
