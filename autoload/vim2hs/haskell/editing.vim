@@ -23,8 +23,8 @@ function! vim2hs#haskell#editing#indentexpr(lnum) " {{{
   elseif l:line =~# '^newtype\>.*=.\+'
     let l:indent = match(l:line, '=') + 2
 
-  elseif l:line =~# '^\k\+.*=\s*\%(do\)\?$'
-    let l:indent = &shiftwidth * 2
+"  elseif l:line =~# '^\k\+.*=\s*\%(do\)\?$'
+"    let l:indent = &shiftwidth * 2
 
   elseif l:line =~# '\[[^\]]*$'
     let l:indent = match(l:line, '\[')
